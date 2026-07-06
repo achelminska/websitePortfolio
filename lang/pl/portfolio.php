@@ -17,21 +17,27 @@ return [
     'about' => [
         'kicker' => '01. O mnie',
         'title' => 'Pozwól, że się przedstawię_',
-        'greeting' => 'Cześć! Jestem Ola 👋',
-        'bio' => 'Fullstack developerka, która uwielbia zamieniać pomysły w kod. Pasjonuje mnie pixel art i budowanie rzeczy, które robią realną różnicę.',
-        'chips' => [
-            'Piszę czysty kod.',
-            'Rozwiązuję prawdziwe problemy.',
-            'Dowożę z pasją.',
+        'window_title' => 'about.me',
+        'question' => 'Kim jesteś?',
+        'messages' => [
+            'Cześć! Jestem Ola 👋',
+            'Fullstack developerka, która uwielbia zamieniać pomysły w kod.',
+            'Pasjonuje mnie czysty UI, pixel art i tworzenie rzeczy, które robią realną różnicę.',
+            'Zbudujmy razem coś wspaniałego! 💜',
         ],
-        'cta' => 'Zbudujmy coś razem!',
     ],
 
     'skills' => [
         'kicker' => '02. Umiejętności',
         'title' => 'Narzędzia i technologie, których używam_',
-        'tab_terminal' => 'Terminal',
+        'tab_terminal' => 'Skills',
         'tab_tools' => 'Narzędzia',
+        'window_title' => 'skills.sh',
+        'tools_window_title' => 'tools.sh',
+        'terminal' => [
+            'user' => 'ola@portfolio',
+            'list_cmd' => 'skills --list',
+        ],
     ],
 
     'projects' => [

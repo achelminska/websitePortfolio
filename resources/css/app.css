@@ -68,4 +68,18 @@
     .kicker {
         @apply font-pixel text-[0.65rem] tracking-widest text-neon-cyan-400 uppercase;
     }
+
+    /* Twarde miganie (włącz/wyłącz) — kursor terminala, w odróżnieniu od animate-pulse (płynne pulsowanie). */
+    .cursor-blink {
+        animation: cursor-blink 1s steps(1) infinite;
+    }
+}
+
+@keyframes cursor-blink {
+    0%, 49% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
 }

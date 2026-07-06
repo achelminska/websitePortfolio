@@ -41,7 +41,7 @@ Jedna scena: postać przy laptopie + otoczenie (książki, roślinki, kubek). Po
 kontener ma stały `aspect-square` i `object-contain`, obrazek skaluje się płynnie od
 telefonu do desktopa bez przycinania — nie potrzebujesz osobnej wersji mobilnej.
 
-## 2. Ikony technologii — sekcja Skills ("Tools")
+## 2. Ikony narzędzi — sekcja Skills ("Tools")
 
 | | |
 |---|---|
@@ -51,12 +51,15 @@ telefonu do desktopa bez przycinania — nie potrzebujesz osobnej wersji mobilne
 | Gdzie w kodzie | [config/skills.php](../config/skills.php) → klucz `tools.*.icon` |
 | Sposób wyświetlania | siatka, każda ikona `size-10` (40px) |
 
+Celowo bez języków/frameworków (te są w zakładce "Skills" jako paski % — patrz
+`config/skills.php` → `terminal_skills`) — tu tylko narzędzia pracy, żeby się nie dublowały.
+
 Wymagane pliki (nazwa musi się zgadzać z `icon` w `config/skills.php`):
 
-`java.svg`, `react.svg`, `javascript.svg`, `typescript.svg`, `dotnet.svg`, `sql.svg`,
-`csharp.svg`, `docker.svg`, `git.svg`, `github.svg`, `linux.svg`, `tailwind.svg`
+`git.png`, `github.png`, `docker.png`, `postgresql.png`, `postman.png`, `swagger.png`,
+`dbeaver.png`, `npm.png`, `vscode.png`, `visual-studio.png`, `rider.png`, `phpstorm.png`
 
-Rekomendacja: to rozpoznawalne logotypy technologii — trudno o spójność, generując
+Rekomendacja: to rozpoznawalne logotypy narzędzi — trudno o spójność, generując
 12 osobnych obrazków AI. Dwie opcje:
 
 1. **Gotowy zestaw SVG** (np. [Simple Icons](https://simpleicons.org) lub
@@ -104,6 +107,26 @@ lampiony, girlandy) zamiast pojedynczych elementów: eksportuj **jedno szerokie 
 sekcję** (ok. 1920×600 px, WebP), wyświetlane jako `object-cover` w tle, przyciemnione
 lub rozmyte pod treścią dla czytelności tekstu — zamiast dziesiątek małych, osobno
 pozycjonowanych sprite'ów, które trudno utrzymać spójnie na różnych szerokościach ekranu.
+
+## 6. Tło kafelka czatu "about.me" — sekcja About
+
+| | |
+|---|---|
+| Plik | `public/images/illustrations/chat-bg.webp` |
+| Wymiary eksportu | ok. **1600×1200 px** (4:3), **bez** przezroczystości (pełne tło) |
+| Format | WebP (ewentualnie JPG) |
+| Gdzie w kodzie | [resources/views/sections/hero.blade.php](../resources/views/sections/hero.blade.php) |
+| Sposób wyświetlania | `object-cover` na całej wysokości/szerokości kafelka + ciemna nakładka `bg-ink-950/75` narzucona w kodzie |
+
+Ten kafelek zmienia proporcje w zależności od ekranu — na desktopie jest szeroki i niski
+(obok ilustracji), na mobile wąski i wysoki (pod ilustracją). Dlatego format 4:3 to
+kompromis: `object-cover` przytnie środek obrazka w obu przypadkach bez rozciągania.
+
+Przyciemnienie (żeby dymki i tekst zostały czytelne) jest już dodane w kodzie jako
+osobna warstwa — **nie musisz** sama przyciemniać obrazka przed eksportem, może być w
+pełnej jasności/nasyceniu. Dobry motyw: to samo "hacker room" tło co w ilustracji
+głównej (biurko, girlandy, monitory), ale bardziej stonowane/zamglone, żeby nie
+konkurowało wizualnie z awatarami i dymkami na pierwszym planie.
 
 ## Szybka checklista przed wrzuceniem pliku
 

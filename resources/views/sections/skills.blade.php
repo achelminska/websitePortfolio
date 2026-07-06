@@ -1,6 +1,10 @@
 @php
-    $terminalSkills = config('skills.terminal', []);
+    $terminal = __('portfolio.skills.terminal');
+    $terminalSkills = config('skills.terminal_skills', []);
     $toolSkills = config('skills.tools', []);
+
+    // Skala paska umiejętności — monochromatyczna (biało-czarna), jak w prawdziwym terminalu.
+    $skillScaleBlocks = 20;
 @endphp
 
 <section id="skills" class="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6">
@@ -9,60 +13,69 @@
         {{ __('portfolio.skills.title') }}
     </h2>
 
-    <div x-data="{ tab: 'terminal' }" class="pixel-panel mt-8 p-4 sm:p-6">
-        {{-- Przełącznik zakładek — czysty Alpine.js, bez Livewire (Flux Tabs to komponent Pro). --}}
-        <div class="inline-flex rounded-lg border border-neon-purple-500/30 bg-ink-950/60 p-1">
-            <button
-                type="button"
-                @click="tab = 'terminal'"
-                :class="tab === 'terminal' ? 'bg-neon-purple-600 text-white' : 'text-mist-500 hover:text-mist-100'"
-                class="rounded-md px-4 py-1.5 text-xs font-medium transition"
-            >
-                {{ __('portfolio.skills.tab_terminal') }}
-            </button>
-            <button
-                type="button"
-                @click="tab = 'tools'"
-                :class="tab === 'tools' ? 'bg-neon-purple-600 text-white' : 'text-mist-500 hover:text-mist-100'"
-                class="rounded-md px-4 py-1.5 text-xs font-medium transition"
-            >
-                {{ __('portfolio.skills.tab_tools') }}
-            </button>
-        </div>
-
-        {{-- Widok "Terminal": paski postępu. --}}
-        <div x-show="tab === 'terminal'" x-cloak class="mt-6 space-y-3 font-mono text-sm">
-            <p class="text-neon-cyan-400">$ skills --list</p>
-            @foreach ($terminalSkills as $skill)
-                <div class="flex items-center gap-3">
-                    <span class="w-24 shrink-0 text-mist-300">{{ $skill['name'] }}</span>
-                    <span class="h-2 flex-1 overflow-hidden rounded-full bg-ink-800">
-                        <span
-                            class="block h-full rounded-full bg-gradient-to-r from-neon-purple-500 to-neon-pink-500"
-                            style="width: {{ (int) $skill['level'] }}%"
-                        ></span>
-                    </span>
-                    <span class="w-10 shrink-0 text-right text-mist-500">{{ (int) $skill['level'] }}%</span>
+    <div class="mt-8 grid gap-6 lg:grid-cols-2 lg:items-stretch">
+        {{-- Czarne okno terminala z paskami postępu. --}}
+        <div class="overflow-hidden rounded-lg border border-neon-purple-500/20 bg-black">
+            <div class="flex items-center justify-between border-b border-neon-purple-500/20 bg-ink-800/40 px-4 py-3">
+                <div class="flex items-center gap-2">
+                    <flux:icon.command-line class="size-4 text-neon-cyan-400" />
+                    <span class="font-mono text-xs text-mist-300">{{ __('portfolio.skills.window_title') }}</span>
                 </div>
-            @endforeach
-            <p class="text-mist-700">$ _</p>
+                <flux:icon.ellipsis-vertical class="size-4 text-mist-700" />
+            </div>
+
+            <div class="space-y-3 p-4 font-mono text-sm leading-relaxed sm:p-6">
+                <p>
+                    <span class="text-mist-300">{{ $terminal['user'] }}:~$</span>
+                    <span class="text-emerald-400">{{ $terminal['list_cmd'] }}</span>
+                </p>
+
+                @foreach ($terminalSkills as $skill)
+                    @php $filledBlocks = (int) round($skill['level'] / 100 * $skillScaleBlocks); @endphp
+                    <div class="flex items-center gap-3">
+                        <span class="w-28 shrink-0 text-mist-100">{{ $skill['name'] }}</span>
+                        <span class="flex flex-1 gap-2.5">
+                            @for ($i = 0; $i < $skillScaleBlocks; $i++)
+                                <span
+                                    class="h-3 flex-1 rounded-[4px] {{ $i < $filledBlocks ? 'bg-zinc-300' : 'bg-white/10' }}"
+                                ></span>
+                            @endfor
+                        </span>
+                        <span class="w-10 shrink-0 text-right text-mist-500">{{ (int) $skill['level'] }}%</span>
+                    </div>
+                @endforeach
+
+                <p>
+                    <span class="text-mist-300">{{ $terminal['user'] }}:~$</span>
+                    <span class="cursor-blink ml-1 inline-block h-3.5 w-2 bg-emerald-400 align-middle"></span>
+                </p>
+            </div>
         </div>
 
-        {{-- Widok "Tools": siatka ikon. --}}
-        <div x-show="tab === 'tools'" x-cloak class="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6">
-            @foreach ($toolSkills as $tool)
-                <div class="flex flex-col items-center gap-2 rounded-lg border border-neon-purple-500/20 bg-ink-800/50 p-3 text-center">
+        {{-- Siatka ikon. Pliki w public/images/tech/ mają własną ramkę/tło wypalone
+             w grafice — bez dodatkowego kontenera, żeby nie dublować ramek. --}}
+        <div class="pixel-panel flex flex-col overflow-hidden p-0">
+            <div class="flex items-center justify-between border-b border-neon-purple-500/20 bg-ink-800/40 px-4 py-3">
+                <div class="flex items-center gap-2">
+                    <flux:icon.wrench-screwdriver class="size-4 text-neon-cyan-400" />
+                    <span class="font-mono text-xs text-mist-300">{{ __('portfolio.skills.tools_window_title') }}</span>
+                </div>
+                <flux:icon.ellipsis-vertical class="size-4 text-mist-700" />
+            </div>
+
+            <div class="grid flex-1 grid-cols-4 content-start gap-4 place-items-center p-4 sm:p-6">
+                @foreach ($toolSkills as $tool)
                     <img
-                        src="{{ asset('images/tech/'.$tool['icon'].'.svg') }}"
+                        src="{{ asset('images/tech/'.$tool['icon'].'.png') }}"
                         alt="{{ $tool['name'] }}"
-                        width="56"
-                        height="56"
+                        title="{{ $tool['name'] }}"
+                        width="256"
+                        height="256"
                         loading="lazy"
-                        class="size-10"
+                        class="size-full max-w-24 rounded-lg"
                     >
-                    <span class="text-xs text-mist-300">{{ $tool['name'] }}</span>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </div>
 </section>

@@ -7,31 +7,37 @@
  */
 return [
 
-    // Widok "Terminal" — pasek postępu % dla kluczowych technologii.
-    'terminal' => [
+    // Widok "Skills" (zakładka w oknie terminala) — tylko języki i frameworki, z poziomem % do paska postępu.
+    // Podmień "level" na swoje realne poziomy biegłości.
+    'terminal_skills' => [
         ['name' => 'JavaScript', 'level' => 90],
         ['name' => 'TypeScript', 'level' => 85],
         ['name' => 'React', 'level' => 90],
         ['name' => 'Node.js', 'level' => 80],
-        ['name' => 'Java', 'level' => 90],
+        ['name' => 'PHP', 'level' => 80],
+        ['name' => 'C#', 'level' => 85],
         ['name' => '.NET', 'level' => 80],
-        ['name' => 'SQL', 'level' => 80],
+        ['name' => 'Laravel', 'level' => 80],
+        ['name' => 'C++', 'level' => 70],
+        ['name' => 'HTML5', 'level' => 90],
+        ['name' => 'Tailwind CSS', 'level' => 85],
+        ['name' => 'Alpine.js', 'level' => 75],
     ],
 
-    // Widok "Tools" — siatka ikon narzędzi i technologii.
+    // Widok "Tools" — narzędzia pracy (celowo bez języków/frameworków, te są w zakładce "Skills").
     'tools' => [
-        ['name' => 'Java', 'icon' => 'java'],
-        ['name' => 'React', 'icon' => 'react'],
-        ['name' => 'JavaScript', 'icon' => 'javascript'],
-        ['name' => 'TypeScript', 'icon' => 'typescript'],
-        ['name' => '.NET', 'icon' => 'dotnet'],
-        ['name' => 'SQL', 'icon' => 'sql'],
-        ['name' => 'C#', 'icon' => 'csharp'],
-        ['name' => 'Docker', 'icon' => 'docker'],
         ['name' => 'Git', 'icon' => 'git'],
         ['name' => 'GitHub', 'icon' => 'github'],
-        ['name' => 'Linux', 'icon' => 'linux'],
-        ['name' => 'Tailwind', 'icon' => 'tailwind'],
+        ['name' => 'Docker', 'icon' => 'docker'],
+        ['name' => 'PostgreSQL', 'icon' => 'postgresql'],
+        ['name' => 'Postman', 'icon' => 'postman'],
+        ['name' => 'Swagger', 'icon' => 'swagger'],
+        ['name' => 'DBeaver', 'icon' => 'dbeaver'],
+        ['name' => 'npm', 'icon' => 'npm'],
+        ['name' => 'VS Code', 'icon' => 'vscode'],
+        ['name' => 'Visual Studio', 'icon' => 'visual-studio'],
+        ['name' => 'Rider', 'icon' => 'rider'],
+        ['name' => 'PhpStorm', 'icon' => 'phpstorm'],
     ],
 
 ];

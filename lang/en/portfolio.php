@@ -17,21 +17,27 @@ return [
     'about' => [
         'kicker' => '01. About',
         'title' => 'Let me introduce myself_',
-        'greeting' => "Hi! I'm Ola 👋",
-        'bio' => 'Fullstack developer who loves turning ideas into code. Passionate about pixel art, building things that make a difference, and shipping with care.',
-        'chips' => [
-            'I write clean code.',
-            'I solve real problems.',
-            'I ship with passion.',
+        'window_title' => 'about.me',
+        'question' => 'Who are you?',
+        'messages' => [
+            "Hi! I'm Ola 👋",
+            'Fullstack developer who loves turning ideas into code.',
+            'Passionate about clean UI, pixel art, and building things that make a difference.',
+            "Let's build something amazing together! 💜",
         ],
-        'cta' => "Let's build together!",
     ],
 
     'skills' => [
         'kicker' => '02. Skills',
         'title' => 'Tools & technologies I use_',
-        'tab_terminal' => 'Terminal',
+        'tab_terminal' => 'Skills',
         'tab_tools' => 'Tools',
+        'window_title' => 'skills.sh',
+        'tools_window_title' => 'tools.sh',
+        'terminal' => [
+            'user' => 'ola@portfolio',
+            'list_cmd' => 'skills --list',
+        ],
     ],
 
     'projects' => [
