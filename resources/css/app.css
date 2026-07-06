@@ -1,0 +1,71 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@theme {
+    /* Fonty — pobierane lokalnie przez laravel-vite-plugin (patrz vite.config.js). */
+    --font-pixel: 'Press Start 2P', 'Courier New', monospace;
+    --font-sans: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    /* Tło — głębokie fiolety/granat w klimacie "hacker room" z mockupów. */
+    --color-ink-950: #0a0715;
+    --color-ink-900: #120c22;
+    --color-ink-800: #1a1330;
+    --color-ink-700: #251b42;
+    --color-ink-600: #332654;
+
+    /* Akcenty neonowe. */
+    --color-neon-purple-400: #c084fc;
+    --color-neon-purple-500: #a855f7;
+    --color-neon-purple-600: #9333ea;
+    --color-neon-pink-400: #ff8fd0;
+    --color-neon-pink-500: #ff5fb4;
+    --color-neon-pink-600: #e83e97;
+    --color-neon-cyan-400: #67f0ff;
+    --color-neon-cyan-500: #3ce1ff;
+    --color-neon-amber-400: #ffe085;
+    --color-neon-amber-500: #ffcf5c;
+
+    /* Tekst. */
+    --color-mist-100: #f3effe;
+    --color-mist-300: #cdc3ea;
+    --color-mist-500: #9c8fc4;
+    --color-mist-700: #6a5f94;
+}
+
+/* Strona jest wyłącznie w trybie ciemnym — zgodnie z mockupami. */
+@layer base {
+    html {
+        color-scheme: dark;
+    }
+
+    body {
+        @apply bg-ink-950 text-mist-100 antialiased;
+        background-image:
+            radial-gradient(ellipse 80% 50% at 20% -10%, color-mix(in oklab, var(--color-neon-purple-600) 18%, transparent), transparent),
+            radial-gradient(ellipse 60% 40% at 90% 10%, color-mix(in oklab, var(--color-neon-pink-600) 12%, transparent), transparent);
+        background-attachment: fixed;
+    }
+
+    ::selection {
+        @apply bg-neon-pink-500/40 text-white;
+    }
+}
+
+@layer components {
+    .font-pixel {
+        font-family: var(--font-pixel);
+    }
+
+    /* Ramka w stylu "retro card" używana przez sekcje/karty. */
+    .pixel-panel {
+        @apply relative rounded-xl border border-neon-purple-500/30 bg-ink-900/70 shadow-[0_0_0_1px_rgba(168,85,247,0.08),0_20px_60px_-20px_rgba(168,85,247,0.35)] backdrop-blur-sm;
+    }
+
+    .kicker {
+        @apply font-pixel text-[0.65rem] tracking-widest text-neon-cyan-400 uppercase;
+    }
+}
