@@ -56,8 +56,9 @@ Celowo bez języków/frameworków (te są w zakładce "Skills" jako paski % — 
 
 Wymagane pliki (nazwa musi się zgadzać z `icon` w `config/skills.php`):
 
-`git.png`, `github.png`, `docker.png`, `postgresql.png`, `postman.png`, `swagger.png`,
-`dbeaver.png`, `npm.png`, `vscode.png`, `visual-studio.png`, `rider.png`, `phpstorm.png`
+`git.png`, `github.png`, `docker.png`, `postgresql.png`, `mysql.png`, `sql.png`,
+`sqlite.png`, `postman.png`, `swagger.png`, `dbeaver.png`, `figma.png`, `npm.png`,
+`vscode.png`, `visual-studio.png`, `rider.png`, `phpstorm.png`
 
 Rekomendacja: to rozpoznawalne logotypy narzędzi — trudno o spójność, generując
 12 osobnych obrazków AI. Dwie opcje:

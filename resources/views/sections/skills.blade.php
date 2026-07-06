@@ -2,9 +2,6 @@
     $terminal = __('portfolio.skills.terminal');
     $terminalSkills = config('skills.terminal_skills', []);
     $toolSkills = config('skills.tools', []);
-
-    // Skala paska umiejętności — monochromatyczna (biało-czarna), jak w prawdziwym terminalu.
-    $skillScaleBlocks = 20;
 @endphp
 
 <section id="skills" class="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6">
@@ -15,7 +12,7 @@
 
     <div class="mt-8 grid gap-6 lg:grid-cols-2 lg:items-stretch">
         {{-- Czarne okno terminala z paskami postępu. --}}
-        <div class="overflow-hidden rounded-lg border border-neon-purple-500/20 bg-black">
+        <div class="relative overflow-hidden rounded-xl border border-neon-purple-500/30 bg-black shadow-[0_0_0_1px_rgba(168,85,247,0.08),0_20px_60px_-20px_rgba(168,85,247,0.35)]">
             <div class="flex items-center justify-between border-b border-neon-purple-500/20 bg-ink-800/40 px-4 py-3">
                 <div class="flex items-center gap-2">
                     <flux:icon.command-line class="size-4 text-neon-cyan-400" />
@@ -31,15 +28,13 @@
                 </p>
 
                 @foreach ($terminalSkills as $skill)
-                    @php $filledBlocks = (int) round($skill['level'] / 100 * $skillScaleBlocks); @endphp
                     <div class="flex items-center gap-3">
                         <span class="w-28 shrink-0 text-mist-100">{{ $skill['name'] }}</span>
-                        <span class="flex flex-1 gap-2.5">
-                            @for ($i = 0; $i < $skillScaleBlocks; $i++)
-                                <span
-                                    class="h-3 flex-1 rounded-[4px] {{ $i < $filledBlocks ? 'bg-zinc-300' : 'bg-white/10' }}"
-                                ></span>
-                            @endfor
+                        <span class="h-2 flex-1 overflow-hidden rounded-full bg-white/10">
+                            <span
+                                class="block h-full rounded-full bg-zinc-400"
+                                style="width: {{ (int) $skill['level'] }}%"
+                            ></span>
                         </span>
                         <span class="w-10 shrink-0 text-right text-mist-500">{{ (int) $skill['level'] }}%</span>
                     </div>
