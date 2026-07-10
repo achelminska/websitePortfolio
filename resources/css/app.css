@@ -73,6 +73,35 @@
     .cursor-blink {
         animation: cursor-blink 1s steps(1) infinite;
     }
+
+    /* Dymki chatu w sekcji About — jak w komunikatorze: nowy dymek rozwija się od dołu
+       (animacja grid-template-rows 0fr -> 1fr), a starsze wiadomości płynnie jadą do góry. */
+    .chat-msg {
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+            grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .chat-msg.is-shown {
+        grid-template-rows: 1fr;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .chat-msg-clip {
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    /* Kropki wskaźnika "pisze..." — delikatne podskakiwanie. */
+    .typing-dot {
+        animation: typing-bounce 1s ease-in-out infinite;
+    }
 }
 
 @keyframes cursor-blink {
@@ -81,5 +110,14 @@
     }
     50%, 100% {
         opacity: 0;
+    }
+}
+
+@keyframes typing-bounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-4px);
     }
 }

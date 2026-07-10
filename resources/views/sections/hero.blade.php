@@ -34,26 +34,84 @@
                 <flux:icon.ellipsis-vertical class="size-4 text-mist-700" />
             </div>
 
-            <div class="flex flex-1 flex-col justify-center gap-3 p-4 sm:p-6">
-                <div class="flex justify-end">
-                    <div class="max-w-[85%] rounded-2xl rounded-br-sm bg-ink-700/80 px-4 py-2.5 text-sm leading-relaxed text-mist-100 shadow-sm">
-                        {{ __('portfolio.about.question') }}
+            {{-- Animacja jak w komunikatorze: nowe wiadomości "rosną" od dołu i wypychają starsze do góry.
+                 Każdy .chat-msg to grid z animowanym grid-template-rows (0fr -> 1fr), więc zmiana
+                 wysokości jest płynna, a kotwica flex-col justify-end trzyma czat przy dole okna. --}}
+            <div
+                class="flex flex-1 flex-col justify-end overflow-hidden p-4 sm:p-6"
+                x-data="{
+                    shown: 0,
+                    typing: false,
+                    total: {{ count(__('portfolio.about.messages')) + 1 }},
+                    started: false,
+                    start() {
+                        if (this.started) return;
+                        this.started = true;
+                        setTimeout(() => {
+                            this.shown = 1; // 'Who are you?'
+                            this.queueNext();
+                        }, 600);
+                    },
+                    queueNext() {
+                        if (this.shown >= this.total) return;
+                        setTimeout(() => { this.typing = true; }, 700);
+                        setTimeout(() => {
+                            this.typing = false;
+                            this.shown++;
+                            this.queueNext();
+                        }, 2000);
+                    },
+                }"
+                x-init="new IntersectionObserver((entries, observer) => {
+                    if (entries[0].isIntersecting) { start(); observer.disconnect(); }
+                }, { threshold: 0.35 }).observe($el)"
+            >
+                <div class="chat-msg" :class="shown >= 1 && 'is-shown'">
+                    <div class="chat-msg-clip">
+                        <div class="flex justify-end pt-3">
+                            <div class="max-w-[85%] rounded-2xl rounded-br-sm bg-ink-700/80 px-4 py-2.5 text-sm leading-relaxed text-mist-100 shadow-sm">
+                                {{ __('portfolio.about.question') }}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 @foreach (__('portfolio.about.messages') as $message)
-                    <div class="flex items-end gap-2">
-                        <span class="relative block size-8 shrink-0 overflow-hidden rounded-full ring-1 ring-neon-purple-400/50">
-                            <span
-                                class="absolute inset-0 bg-[image:var(--avatar-img)] bg-cover"
-                                style="--avatar-img: url('{{ asset('images/illustrations/hero-about.png') }}'); background-position: 44% 27%; background-size: 360%;"
-                            ></span>
-                        </span>
-                        <div class="max-w-[85%] rounded-2xl rounded-bl-sm bg-violet-200 px-4 py-2.5 text-sm leading-relaxed text-ink-950 shadow-sm">
-                            {{ $message }}
+                    <div class="chat-msg" :class="shown >= {{ $loop->index + 2 }} && 'is-shown'">
+                        <div class="chat-msg-clip">
+                            <div class="flex items-end gap-2 pt-3">
+                                <span class="relative block size-8 shrink-0 overflow-hidden rounded-full ring-1 ring-neon-purple-400/50">
+                                    <span
+                                        class="absolute inset-0 bg-[image:var(--avatar-img)] bg-cover"
+                                        style="--avatar-img: url('{{ asset('images/illustrations/hero-about.png') }}'); background-position: 44% 27%; background-size: 360%;"
+                                    ></span>
+                                </span>
+                                <div class="max-w-[85%] rounded-2xl rounded-bl-sm bg-violet-200 px-4 py-2.5 text-sm leading-relaxed text-ink-950 shadow-sm">
+                                    {{ $message }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @endforeach
+
+                {{-- Wskaźnik pisania — rozwija się i zwija tym samym mechanizmem co dymki. --}}
+                <div class="chat-msg" :class="typing && 'is-shown'">
+                    <div class="chat-msg-clip">
+                        <div class="flex items-end gap-2 pt-3">
+                            <span class="relative block size-8 shrink-0 overflow-hidden rounded-full ring-1 ring-neon-purple-400/50">
+                                <span
+                                    class="absolute inset-0 bg-[image:var(--avatar-img)] bg-cover"
+                                    style="--avatar-img: url('{{ asset('images/illustrations/hero-about.png') }}'); background-position: 44% 27%; background-size: 360%;"
+                                ></span>
+                            </span>
+                            <div class="flex items-center gap-1 rounded-2xl rounded-bl-sm bg-violet-200/90 px-4 py-3.5 shadow-sm">
+                                <span class="typing-dot size-1.5 rounded-full bg-ink-700"></span>
+                                <span class="typing-dot size-1.5 rounded-full bg-ink-700" style="animation-delay: 0.15s;"></span>
+                                <span class="typing-dot size-1.5 rounded-full bg-ink-700" style="animation-delay: 0.3s;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

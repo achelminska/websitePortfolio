@@ -129,6 +129,28 @@ pełnej jasności/nasyceniu. Dobry motyw: to samo "hacker room" tło co w ilustr
 głównej (biurko, girlandy, monitory), ale bardziej stonowane/zamglone, żeby nie
 konkurowało wizualnie z awatarami i dymkami na pierwszym planie.
 
+## 7. Screenshoty projektów — sekcja Projects (mockup laptop + telefon)
+
+| | |
+|---|---|
+| Pliki | `public/images/projects/{slug}-desktop.png` i `public/images/projects/{slug}-mobile.png` |
+| `slug` | patrz [config/projects.php](../config/projects.php) → klucz `slug` każdego projektu (np. `spykey`, `rotify`, `chatbox`, `ghost-market`) |
+| Wymiary — desktop | ok. **1600×900 px** (16:9), **bez** przezroczystości |
+| Wymiary — mobile | ok. **540×1140 px** (9:19), **bez** przezroczystości |
+| Format | PNG lub WebP |
+| Gdzie w kodzie | [resources/views/sections/projects.blade.php](../resources/views/sections/projects.blade.php) |
+| Sposób wyświetlania | `object-cover` w ramce laptopa/telefonu — obie ramki (bezel, "podstawka" laptopa) są narysowane w kodzie, nie w grafice |
+
+To mają być **realne, płaskie screenshoty** Twoich aplikacji (bez żadnej ramki urządzenia
+na grafice — ramkę dorysowuje CSS). Desktop = zrzut całego okna/widoku aplikacji w
+proporcji 16:9 (dopasuj kadrowanie tak, żeby najważniejsza część UI była na środku, bo
+`object-cover` przycina brzegi). Mobile = zrzut widoku aplikacji na telefonie, w
+proporcji zbliżonej do typowego ekranu smartfona (9:19).
+
+Jeśli dla któregoś projektu nie masz jeszcze screenshotów — nic nie musisz robić,
+sekcja pokaże wtedy szarą "dziurę" z nazwą brakującego pliku, żebyś wiedziała co
+wgrać.
+
 ## Szybka checklista przed wrzuceniem pliku
 
 - [ ] Tło przezroczyste (sprawdź w podglądzie na szachownicy, nie na białym tle)
