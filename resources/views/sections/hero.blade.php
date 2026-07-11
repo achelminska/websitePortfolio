@@ -1,11 +1,11 @@
 <section id="about" class="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6">
     <p class="kicker">{{ __('portfolio.about.kicker') }}</p>
-    <h1 class="mt-2 font-pixel text-xl leading-relaxed text-mist-100 sm:text-2xl">
+    <h1 class="mt-2 font-pixel text-2xl leading-relaxed text-mist-100 sm:text-4xl">
         {{ __('portfolio.about.title') }}
     </h1>
 
     <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,420px)_1fr] lg:items-stretch">
-        <div class="pixel-panel aspect-square w-full max-w-[420px] p-4">
+        <div class="pixel-panel aspect-square w-full max-w-[420px] p-2">
             <img
                 src="{{ asset('images/illustrations/hero-about.png') }}"
                 alt="{{ __('portfolio.about.window_title') }}"

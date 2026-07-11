@@ -45,11 +45,16 @@ return [
         'title' => 'Things I\'ve built_',
         'view_project' => 'View project',
         'view_all' => 'View all',
+        'source_code' => 'Source code',
+        'live_demo' => 'Live demo',
+        'live_demo_hint' => 'See the app in action',
+        'flip_hint' => 'Hover or tap to see links',
     ],
 
     'contact' => [
         'kicker' => '04. Contact',
         'title' => "Let's work together_",
+        'window_title' => 'new-message.eml',
         'name' => 'Your name',
         'name_placeholder' => 'Enter your name',
         'email' => 'Email address',

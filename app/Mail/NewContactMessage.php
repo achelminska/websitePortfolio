@@ -36,8 +36,10 @@ class NewContactMessage extends Mailable
 
     public function content(): Content
     {
+        // Szablon używa komponentów <x-mail::...>, więc musi być renderowany
+        // jako markdown — zwykłe `view:` nie rejestruje ścieżki `mail::`.
         return new Content(
-            view: 'emails.new-contact-message',
+            markdown: 'emails.new-contact-message',
         );
     }
 }

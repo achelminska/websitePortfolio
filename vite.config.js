@@ -9,10 +9,11 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
             fonts: [
-                // Nagłówki i akcenty w klimacie pixel-art.
-                bunny('Press Start 2P', {
+                // Nagłówki i akcenty w klimacie pixel-art — Pixelify Sans ma pełne
+                // wsparcie polskich znaków diakrytycznych (ą, ę, ó, ś, ź, ż, ć, ń).
+                bunny('Pixelify Sans', {
                     alias: 'pixel',
-                    weights: [400],
+                    weights: [400, 700],
                 }),
                 // Treść i "terminal" — czytelny monospace.
                 bunny('JetBrains Mono', {

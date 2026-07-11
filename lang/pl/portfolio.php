@@ -45,11 +45,16 @@ return [
         'title' => 'Rzeczy, które zbudowałam_',
         'view_project' => 'Zobacz projekt',
         'view_all' => 'Zobacz wszystkie',
+        'source_code' => 'Kod źródłowy',
+        'live_demo' => 'Live demo',
+        'live_demo_hint' => 'Zobacz działającą aplikację',
+        'flip_hint' => 'Najedź lub stuknij, aby zobaczyć linki',
     ],
 
     'contact' => [
         'kicker' => '04. Kontakt',
         'title' => 'Porozmawiajmy o współpracy_',
+        'window_title' => 'new-message.eml',
         'name' => 'Twoje imię',
         'name_placeholder' => 'Podaj swoje imię',
         'email' => 'Adres e-mail',

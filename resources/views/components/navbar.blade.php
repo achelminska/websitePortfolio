@@ -13,7 +13,7 @@
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <a href="#about" class="flex items-center gap-2 text-neon-cyan-400 hover:text-neon-cyan-300">
             <flux:icon.code-bracket class="size-5" />
-            <span class="font-pixel text-[0.6rem] tracking-widest">ALEKSANDRA IZABELA CHELMINSKA_</span>
+            <span class="font-pixel text-[1rem] tracking-widest">ALEKSANDRA IZABELA CHEŁMIŃSKA_</span>
         </a>
 
         <nav class="hidden items-center gap-6 sm:flex">

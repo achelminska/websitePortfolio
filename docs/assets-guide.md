@@ -69,20 +69,27 @@ Rekomendacja: to rozpoznawalne logotypy narzędzi — trudno o spójność, gene
    "ujednolicony zestaw 12 ikon technologicznych w stylu pixel-art", każda na
    identycznym płótnie 256×256 px, przezroczyste tło, ten sam poziom detalu i paleta.
 
-## 3. Ikony projektów — sekcja Projects
+## 3. Ikony rewersu kart projektów (GitHub / live demo) — sekcja Projects
 
 | | |
 |---|---|
-| Folder | `public/images/projects/` |
-| Wymiary eksportu | **256×256 px**, przezroczyste tło |
-| Format | WebP (ewentualnie SVG jeśli to płaska ikona) |
-| Gdzie w kodzie | [config/projects.php](../config/projects.php) → klucz `icon` |
-| Sposób wyświetlania | `size-12` (48px) obok tytułu karty |
+| Folder | `public/images/ui/` (utwórz) |
+| Wymiary eksportu | **256×256 px** na ikonę, przezroczyste tło |
+| Format | PNG lub WebP |
+| Gdzie w kodzie | [resources/views/sections/projects.blade.php](../resources/views/sections/projects.blade.php) |
+| Sposób wyświetlania | `size-8` (32px) w wierszach linków na odwrocie karty |
 
-Wymagane pliki: `spykey.webp`, `rotify.webp`, `chatbox.webp`, `ghost-market.webp`.
+Po najechaniu myszką karta projektu odwraca się i pokazuje linki do repozytoriów
+GitHub oraz do publicznego deploymentu. Wymagane pliki:
 
-Zachowaj spójny styl ramki/kolorystyki między tymi czterema ikonami — to one budują
-wrażenie spójnej siatki kart projektów.
+- `github.png` — logo GitHuba (Octocat / znaczek gwiazdki) w stylu pixel-art,
+  monochromatyczne jasne (biel/`#f3effe`) z ew. fioletowym akcentem
+- `live.png` — pixel-artowa rakieta lub kula ziemska w kolorze neonowego cyjanu
+  (`#67f0ff`) — symbol działającej aplikacji online
+
+Bez ramki/tła wokół ikony (inaczej niż ikony narzędzi z sekcji 2) — będą małe,
+osadzone w wierszach z własnym obramowaniem. Dopóki plików nie ma, kod używa
+zastępczych ikon z Flux (nawiasy kodu / rakieta) — strona działa bez nich.
 
 ## 4. Maskotki / dekoracje (opcjonalnie)
 
@@ -134,7 +141,7 @@ konkurowało wizualnie z awatarami i dymkami na pierwszym planie.
 | | |
 |---|---|
 | Pliki | `public/images/projects/{slug}-desktop.png` i `public/images/projects/{slug}-mobile.png` |
-| `slug` | patrz [config/projects.php](../config/projects.php) → klucz `slug` każdego projektu (np. `spykey`, `rotify`, `chatbox`, `ghost-market`) |
+| `slug` | patrz [config/projects.php](../config/projects.php) → klucz `slug` każdego projektu (np. `digivault`, `qc-alerts`, `cinemabox`, `ghost-market`) |
 | Wymiary — desktop | ok. **1600×900 px** (16:9), **bez** przezroczystości |
 | Wymiary — mobile | ok. **540×1140 px** (9:19), **bez** przezroczystości |
 | Format | PNG lub WebP |
