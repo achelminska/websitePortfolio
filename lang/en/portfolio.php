@@ -3,8 +3,8 @@
 return [
 
     'meta' => [
-        'title' => 'Ola — Fullstack Developer Portfolio',
-        'description' => 'Fullstack developer who loves turning ideas into code. Java, React, TypeScript, .NET.',
+        'title' => 'Aleksandra — Fullstack Developer Portfolio',
+        'description' => 'Fullstack developer — .NET/C#, Laravel/PHP, React Native. Looking for my first junior developer role in the Netherlands.',
     ],
 
     'nav' => [
@@ -20,10 +20,11 @@ return [
         'window_title' => 'about.me',
         'question' => 'Who are you?',
         'messages' => [
-            "Hi! I'm Ola 👋",
-            'Fullstack developer who loves turning ideas into code.',
-            'Passionate about clean UI, pixel art, and building things that make a difference.',
-            "Let's build something amazing together! 💜",
+            "Hi! I'm Aleksandra 👋",
+            'Fullstack developer in my final year of engineering studies, living in the Netherlands.',
+            'Day-to-day .NET/C# and Laravel/PHP — I like not staying locked in one stack, plus React Native.',
+            "More than frontend, I'm interested in what you can't see — how data flows through a system and why some architectures fit the problem while others only complicate it.",
+            'Currently looking for my first junior fullstack developer role in the Netherlands 🇳🇱',
         ],
     ],
 
@@ -35,7 +36,7 @@ return [
         'window_title' => 'skills.sh',
         'tools_window_title' => 'tools.sh',
         'terminal' => [
-            'user' => 'ola@portfolio',
+            'user' => 'aleksandra@portfolio',
             'list_cmd' => 'skills --list',
         ],
     ],
@@ -82,7 +83,7 @@ return [
 
     'footer' => [
         'thanks' => "Thanks for visiting! Let's build something amazing together.",
-        'rights' => ':year Ola. All rights reserved.',
+        'rights' => ':year Aleksandra. All rights reserved.',
     ],
 
 ];

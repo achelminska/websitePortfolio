@@ -16,7 +16,7 @@
             >
         </div>
 
-        <div class="pixel-panel flex flex-col overflow-hidden p-0">
+        <div class="pixel-panel relative flex h-[min(420px,70vh)] min-h-0 flex-col overflow-hidden p-0 lg:h-auto lg:max-h-[420px]">
             {{-- Tło kafelka — wyeksportuj wg docs/assets-guide.md (#6) i wrzuć jako chat-bg.webp. --}}
             <img
                 src="{{ asset('images/illustrations/chat-bg.png') }}"
@@ -34,30 +34,41 @@
                 <flux:icon.ellipsis-vertical class="size-4 text-mist-700" />
             </div>
 
-            {{-- Animacja jak w komunikatorze: nowe wiadomości "rosną" od dołu i wypychają starsze do góry.
-                 Każdy .chat-msg to grid z animowanym grid-template-rows (0fr -> 1fr), więc zmiana
-                 wysokości jest płynna, a kotwica flex-col justify-end trzyma czat przy dole okna. --}}
+            {{-- Animacja jak w komunikatorze: nowe wiadomości rozwijają się od dołu;
+                 okno ma stałą wysokość i przewija się w dół przy kolejnych wiadomościach. --}}
             <div
-                class="flex flex-1 flex-col justify-end overflow-hidden p-4 sm:p-6"
+                class="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain p-4 sm:p-6"
+                x-ref="chatScroll"
                 x-data="{
                     shown: 0,
                     typing: false,
                     total: {{ count(__('portfolio.about.messages')) + 1 }},
                     started: false,
+                    scrollToBottom() {
+                        this.$nextTick(() => {
+                            const el = this.$refs.chatScroll;
+                            if (el) el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
+                        });
+                    },
                     start() {
                         if (this.started) return;
                         this.started = true;
                         setTimeout(() => {
-                            this.shown = 1; // 'Who are you?'
+                            this.shown = 1;
+                            this.scrollToBottom();
                             this.queueNext();
                         }, 600);
                     },
                     queueNext() {
                         if (this.shown >= this.total) return;
-                        setTimeout(() => { this.typing = true; }, 700);
+                        setTimeout(() => {
+                            this.typing = true;
+                            this.scrollToBottom();
+                        }, 700);
                         setTimeout(() => {
                             this.typing = false;
                             this.shown++;
+                            this.scrollToBottom();
                             this.queueNext();
                         }, 2000);
                     },
@@ -66,6 +77,7 @@
                     if (entries[0].isIntersecting) { start(); observer.disconnect(); }
                 }, { threshold: 0.35 }).observe($el)"
             >
+                <div class="mt-auto flex flex-col">
                 <div class="chat-msg" :class="shown >= 1 && 'is-shown'">
                     <div class="chat-msg-clip">
                         <div class="flex justify-end pt-3">
@@ -111,6 +123,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

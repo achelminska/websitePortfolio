@@ -10,18 +10,15 @@ return [
     // Widok "Skills" (zakładka w oknie terminala) — tylko języki i frameworki, z poziomem % do paska postępu.
     // Podmień "level" na swoje realne poziomy biegłości.
     'terminal_skills' => [
-        ['name' => 'JavaScript', 'level' => 90],
-        ['name' => 'TypeScript', 'level' => 85],
-        ['name' => 'React', 'level' => 90],
-        ['name' => 'Node.js', 'level' => 80],
-        ['name' => 'PHP', 'level' => 80],
-        ['name' => 'C#', 'level' => 85],
-        ['name' => '.NET', 'level' => 80],
-        ['name' => 'Laravel', 'level' => 80],
-        ['name' => 'C++', 'level' => 70],
-        ['name' => 'HTML5', 'level' => 90],
-        ['name' => 'Tailwind CSS', 'level' => 85],
-        ['name' => 'Alpine.js', 'level' => 75],
+        ['name' => 'C#',           'level' => 75], // WorkThen, GHST, CinemaBox — budujesz na tym aktywnie
+        ['name' => '.NET',         'level' => 70], // Web API, Clean Arch, MediatR — ale wciąż uczysz się niuansów
+        ['name' => 'PHP',          'level' => 70], // QualityCheck, GHSTmarket, portfolio
+        ['name' => 'Laravel',      'level' => 65], // aktywnie budujesz, ale relatywnie nowy stack
+        ['name' => 'JavaScript',   'level' => 75], // długi staż, React, RN, bot
+        ['name' => 'TypeScript',   'level' => 65], // używasz, ale nie Twój default
+        ['name' => 'React',        'level' => 70], // admin panel, CinemaBox
+        ['name' => 'React Native', 'level' => 65], // WorkThen mobile, GHST mobile
+        ['name' => 'Tailwind CSS', 'level' => 80], // to jest Twój default, czujesz się pewnie
     ],
 
     // Widok "Tools" — narzędzia pracy (celowo bez języków/frameworków, te są w zakładce "Skills").
@@ -31,13 +28,13 @@ return [
         ['name' => 'Docker', 'icon' => 'docker'],
         ['name' => 'PostgreSQL', 'icon' => 'postgresql'],
         ['name' => 'MySQL', 'icon' => 'mysql'],
-        ['name' => 'SQL', 'icon' => 'sql'],
+        ['name' => 'MongoDB', 'icon' => 'mongodb'],
         ['name' => 'SQLite', 'icon' => 'sqlite'],
         ['name' => 'Postman', 'icon' => 'postman'],
         ['name' => 'Swagger', 'icon' => 'swagger'],
         ['name' => 'DBeaver', 'icon' => 'dbeaver'],
         ['name' => 'Figma', 'icon' => 'figma'],
-        ['name' => 'npm', 'icon' => 'npm'],
+        ['name' => 'SQL Server', 'icon' => 'sql-server'],
         ['name' => 'VS Code', 'icon' => 'vscode'],
         ['name' => 'Visual Studio', 'icon' => 'visual-studio'],
         ['name' => 'Rider', 'icon' => 'rider'],

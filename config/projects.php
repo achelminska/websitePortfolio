@@ -32,7 +32,7 @@ return [
             ['label' => 'DigiVaultMobile', 'url' => 'https://github.com/achelminska/DigiVaultMobile'],
         ],
         'live' => [
-            ['label' => 'Portal WWW', 'url' => 'https://digivaultportal.onrender.com/Account/Login'],
+            ['label' => 'Portal WWW', 'url' => 'https://digivaultportal.onrender.com/'],
             ['label' => 'Intranet (admin)', 'url' => 'https://digivaultintranet.onrender.com/account/login'],
             ['label' => 'API — Swagger', 'url' => 'https://digivaultapi.onrender.com/swagger/index.html'],
             ['label' => 'Mobile — Appetize.io', 'url' => 'https://appetize.io/app/ios/org.reactjs.native.example.DigiVaultMobile?device=iphone14pro&osVersion=16.2&toolbar=true'],
@@ -67,6 +67,10 @@ return [
         'accent' => 'dark',
         'github' => [
             ['label' => 'ReactApp', 'url' => 'https://github.com/achelminska/ReactApp'],
+        ],
+        'live' => [
+            ['label' => 'cinemabox-z52n.onrender.com', 'url' => 'https://cinemabox-z52n.onrender.com'],
+            ['label' => 'Panel admina', 'url' => 'https://cinemabox-z52n.onrender.com/admin/login'],
         ],
     ],
 
