@@ -30,7 +30,7 @@ RUN composer install \
 
 
 # --- Stage 3: production image ---
-FROM php:8.3-cli-bookworm
+FROM php:8.4-cli-bookworm
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libzip-dev \
