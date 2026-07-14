@@ -4,6 +4,7 @@ FROM node:20-bookworm-slim AS assets
 WORKDIR /app
 
 COPY package.json package-lock.json ./
+ENV PUPPETEER_SKIP_DOWNLOAD=true
 RUN npm ci
 
 COPY vite.config.js ./
