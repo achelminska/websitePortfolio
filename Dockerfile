@@ -1,4 +1,18 @@
-# --- Stage 1: frontend assets (Vite + Tailwind) ---
+# --- Stage 1: PHP dependencies (needed before frontend build for Flux/Tailwind) ---
+FROM composer:2 AS vendor
+
+WORKDIR /app
+
+COPY composer.json composer.lock ./
+RUN composer install \
+    --no-dev \
+    --no-interaction \
+    --no-scripts \
+    --prefer-dist \
+    --optimize-autoloader
+
+
+# --- Stage 2: frontend assets (Vite + Tailwind) ---
 FROM node:20-bookworm-slim AS assets
 
 WORKDIR /app
@@ -11,22 +25,9 @@ COPY vite.config.js ./
 COPY resources ./resources
 COPY public ./public
 COPY lang ./lang
+COPY --from=vendor /app/vendor ./vendor
 
 RUN npm run build
-
-
-# --- Stage 2: PHP dependencies ---
-FROM composer:2 AS vendor
-
-WORKDIR /app
-
-COPY composer.json composer.lock ./
-RUN composer install \
-    --no-dev \
-    --no-interaction \
-    --no-scripts \
-    --prefer-dist \
-    --optimize-autoloader
 
 
 # --- Stage 3: production image ---
