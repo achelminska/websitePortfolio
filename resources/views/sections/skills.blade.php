@@ -58,7 +58,7 @@
                 <flux:icon.ellipsis-vertical class="size-4 text-mist-700" />
             </div>
 
-            <div class="grid flex-1 grid-cols-4 content-start gap-4 place-items-center p-4 sm:p-6">
+            <div class="grid min-w-0 flex-1 grid-cols-4 content-start gap-3 place-items-center p-4 sm:gap-4 sm:p-6">
                 @foreach ($toolSkills as $tool)
                     <img
                         src="{{ asset('images/tech/'.$tool['icon'].'.png') }}"
@@ -67,7 +67,7 @@
                         width="256"
                         height="256"
                         loading="lazy"
-                        class="size-full max-w-24 rounded-lg"
+                        class="size-14 min-w-0 object-contain sm:size-20"
                     >
                 @endforeach
             </div>
