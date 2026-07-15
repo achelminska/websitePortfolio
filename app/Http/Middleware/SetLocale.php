@@ -8,8 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Ustawia aktywny język strony na podstawie wyboru zapisanego w sesji
- * (plikowej — bez bazy danych), z fallbackiem do języka przeglądarki
- * i domyślnego locale aplikacji.
+ * (plikowej — bez bazy danych), z fallbackiem do domyślnego locale aplikacji (EN).
  */
 class SetLocale
 {
@@ -22,7 +21,9 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = session('locale') ?? $request->getPreferredLanguage(self::SUPPORTED_LOCALES) ?? config('app.locale');
+        // Domyślnie EN; język z sesji (po przełączeniu) ma pierwszeństwo.
+        // Preferencji przeglądarki nie używamy — portfolio ma startować po angielsku.
+        $locale = session('locale') ?? config('app.locale');
 
         if (in_array($locale, self::SUPPORTED_LOCALES, true)) {
             app()->setLocale($locale);

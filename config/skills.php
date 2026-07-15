@@ -35,10 +35,10 @@ return [
         ['name' => 'MongoDB', 'icon' => 'mongodb'],
         ['name' => 'SQLite', 'icon' => 'sqlite'],
         ['name' => 'SQL Server', 'icon' => 'sql-server'],
-        // API & DB tools
-        ['name' => 'DBeaver', 'icon' => 'dbeaver'],
+        // API tools
         ['name' => 'Postman', 'icon' => 'postman'],
         ['name' => 'Swagger', 'icon' => 'swagger'],
+        ['name' => 'DBeaver', 'icon' => 'dbeaver'],
         // Editors / IDEs
         ['name' => 'VS Code', 'icon' => 'vscode'],
         ['name' => 'Visual Studio', 'icon' => 'visual-studio'],
