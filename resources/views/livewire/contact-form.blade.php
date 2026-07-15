@@ -10,15 +10,21 @@
 
     <div class="p-5 sm:p-8">
         @if ($sent)
-            <flux:callout variant="success" icon="check-circle" heading="{{ __('portfolio.contact.sent_title') }}" text="{{ __('portfolio.contact.sent_body') }}" class="mb-5" />
+            <flux:callout variant="success" icon="check-circle" heading="{{ __('portfolio.contact.sent_title') }}" class="mb-5">
+                {{ __('portfolio.contact.sent_body') }}
+            </flux:callout>
         @endif
 
         @if ($failed)
-            <flux:callout variant="danger" icon="exclamation-triangle" heading="{{ __('portfolio.contact.error_title') }}" text="{{ __('portfolio.contact.error_body') }}" class="mb-5" />
+            <flux:callout variant="danger" icon="exclamation-triangle" heading="{{ __('portfolio.contact.error_title') }}" class="mb-5">
+                {{ __('portfolio.contact.error_body') }}
+            </flux:callout>
         @endif
 
         @if ($rateLimited)
-            <flux:callout variant="warning" icon="clock" text="{{ __('portfolio.contact.rate_limited') }}" class="mb-5" />
+            <flux:callout variant="warning" icon="clock" class="mb-5">
+                {{ __('portfolio.contact.rate_limited') }}
+            </flux:callout>
         @endif
 
         <form wire:submit="send" class="space-y-5">

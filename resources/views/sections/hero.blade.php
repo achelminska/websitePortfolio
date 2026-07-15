@@ -44,10 +44,30 @@
                     typing: false,
                     total: {{ count(__('portfolio.about.messages')) + 1 }},
                     started: false,
+                    _scrollRaf: null,
                     scrollToBottom() {
+                        const el = this.$refs.chatScroll;
+                        if (!el) return;
+
+                        const pin = () => { el.scrollTop = el.scrollHeight; };
+
+                        // Anuluj poprzednie przypinanie — kolejne wiadomości nie walczą o smooth scroll.
+                        if (this._scrollRaf) cancelAnimationFrame(this._scrollRaf);
+
                         this.$nextTick(() => {
-                            const el = this.$refs.chatScroll;
-                            if (el) el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
+                            pin();
+                            // Dymek rozwija się ~500ms (grid-template-rows) — trzymaj dół przez całą animację.
+                            const start = performance.now();
+                            const tick = (now) => {
+                                pin();
+                                if (now - start < 650) {
+                                    this._scrollRaf = requestAnimationFrame(tick);
+                                } else {
+                                    this._scrollRaf = null;
+                                    pin();
+                                }
+                            };
+                            this._scrollRaf = requestAnimationFrame(tick);
                         });
                     },
                     start() {
