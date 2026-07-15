@@ -22,19 +22,24 @@ return [
     ],
 
     // Widok "Tools" — narzędzia pracy (celowo bez języków/frameworków, te są w zakładce "Skills").
+    // Kolejność: VCS/infra → bazy → API/DB tools → edytory (siatka 4 kolumny).
     'tools' => [
+        // Version control & infra
         ['name' => 'Git', 'icon' => 'git'],
         ['name' => 'GitHub', 'icon' => 'github'],
         ['name' => 'Docker', 'icon' => 'docker'],
+        ['name' => 'Figma', 'icon' => 'figma'],
+        // Databases
         ['name' => 'PostgreSQL', 'icon' => 'postgresql'],
         ['name' => 'MySQL', 'icon' => 'mysql'],
         ['name' => 'MongoDB', 'icon' => 'mongodb'],
         ['name' => 'SQLite', 'icon' => 'sqlite'],
+        ['name' => 'SQL Server', 'icon' => 'sql-server'],
+        // API & DB tools
+        ['name' => 'DBeaver', 'icon' => 'dbeaver'],
         ['name' => 'Postman', 'icon' => 'postman'],
         ['name' => 'Swagger', 'icon' => 'swagger'],
-        ['name' => 'DBeaver', 'icon' => 'dbeaver'],
-        ['name' => 'Figma', 'icon' => 'figma'],
-        ['name' => 'SQL Server', 'icon' => 'sql-server'],
+        // Editors / IDEs
         ['name' => 'VS Code', 'icon' => 'vscode'],
         ['name' => 'Visual Studio', 'icon' => 'visual-studio'],
         ['name' => 'Rider', 'icon' => 'rider'],
