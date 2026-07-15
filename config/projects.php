@@ -24,7 +24,7 @@ return [
             'en' => 'Multi-platform e-learning marketplace (web, API & mobile) for browsing, buying and selling online courses.',
             'pl' => 'Wieloplatformowy marketplace e-learningowy (web, API i mobile) do przeglądania, kupowania i sprzedawania kursów online.',
         ],
-        'tech' => ['ASP.NET Core', 'React Native', 'TypeScript'],
+        'tech' => ['ASP.NET Core MVC', 'Tailwind CSS', 'React Native', 'TypeScript', 'PostgreSQL'],
         'accent' => 'dark',
         'github' => [
             ['label' => 'DigiVaultWeb', 'url' => 'https://github.com/achelminska/DigiVaultWeb'],

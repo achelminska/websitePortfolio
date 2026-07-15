@@ -4,7 +4,7 @@ return [
 
     'meta' => [
         'title' => 'Aleksandra — Fullstack Developer Portfolio',
-        'description' => 'Fullstack developer — .NET/C#, Laravel/PHP, React Native. Looking for my first junior developer role in the Netherlands.',
+        'description' => 'Fullstack developer — .NET/C#, Laravel/PHP, React Native. Looking for my first job as a junior developer in the Netherlands.',
     ],
 
     'nav' => [
@@ -22,9 +22,9 @@ return [
         'messages' => [
             "Hi! I'm Aleksandra 👋",
             'Fullstack developer in my final year of engineering studies, living in the Netherlands.',
-            'Day-to-day .NET/C# and Laravel/PHP — I like not staying locked in one stack, plus React Native.',
+            'Day to day I work with .NET, Laravel and React Native. I don\'t like locking myself into one stack.',
             "More than frontend, I'm interested in what you can't see — how data flows through a system and why some architectures fit the problem while others only complicate it.",
-            'Currently looking for my first junior fullstack developer role in the Netherlands 🇳🇱',
+            'Currently looking for my first job as a junior fullstack developer in the Netherlands 🇳🇱',
         ],
     ],
 
@@ -82,7 +82,7 @@ return [
     ],
 
     'footer' => [
-        'thanks' => "Thanks for visiting! Let's build something amazing together.",
+        'thanks' => "Thanks for visiting! Let's build something together.",
         'rights' => ':year Aleksandra. All rights reserved.',
     ],
 
